@@ -74,7 +74,7 @@ A step by step user guideline, with test data ready for use to test the webapp:
 9. Next, under backtest click Make a backtest.
 10. Input any test name (eg. Test123)
 11. Select test date range: Start date 2016-01-01  End date 2016-02-01.
-12. In normal circumstances all market data would be availble for all U.S and HongKong stocks, however this test version only has marketdata for the testinput stocks.
+12. In normal circumstances all market data would be availble for all U.S and HongKong stocks for all dates from 2008 to 2020, however this test version only has marketdata for the testinput stocks.
 13. Check the Use For Test box for the indicator previously created(testdata). Leave Use Sell Indicator box blank, since we're not using custom uploaded sell data.
 14. Click Run & Save
 15. After a few moments, a result report is generated. Different metrics are calculated and can be seen under different tabs, such as return against benchmark graph and more. Ohter tabs such as Daiy Summeries shows a EOD PL extra.
