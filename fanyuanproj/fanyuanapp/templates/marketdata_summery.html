@@ -1,0 +1,25 @@
+{% extends  'layout.html' %}
+
+{% block content %}
+<div class="content-section">
+    <legend class="border-bottom mb-3">Market Data Summeries (Total {{total-1}})</legend>
+    <fieldset class="from-group border-bottom mb-4">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>Symbol</th>
+                <th>From Date</th>
+                <th>To Date</th>
+            </tr>
+            {% for summery in summeries%}
+                {% if summery.id != 1%}
+                    <tr>
+                        <td><a href="{{ url_for('database.marketdata', symbol=summery.symbol )}}">{{summery.symbol}}</a></td>
+                        <td>{{summery.fromdate}}</td>
+                        <td>{{summery.todate}}</td>
+                    </tr>
+                {% endif%}
+            {% endfor %}
+        </table>
+    </fieldset>
+</div>
+{% endblock %}

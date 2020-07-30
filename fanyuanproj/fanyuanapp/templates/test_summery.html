@@ -1,0 +1,33 @@
+{% extends  'layout.html' %}
+
+{% block content %}
+<div class="content-section">
+
+    <legend class="border-bottom mb-3">Test Summeries
+        <a class="btn btn-primary btn-sm mb-1 float-right" href="{{ url_for('backtest.test') }}">New Test</a>
+    </legend>
+
+    <fieldset class="from-group border-bottom mb-4">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>Name</th>
+                <th>Test Date</th>
+                <th>Date Range</th>
+                <th>Resturns</th>
+                <th>Indicators</th>
+                <th>Status</th>
+            </tr>
+            {% for summery in summeries%}
+                <tr>
+                    <td><a href="{{ url_for('backtest.test_results', summery_id=summery.id )}}">{{summery.name}}</a></td>
+                    <td>{{summery.date_tested.strftime("%Y-%m-%d %H:%M")}}</td>
+                    <td>{{summery.start + " to " + summery.end}}</td>
+                    <td>{{summery.returns}}</td>
+                    <td>{{summery.indicators}}</td>
+                    <td>{{summery.status}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </fieldset>
+</div>
+{% endblock %}

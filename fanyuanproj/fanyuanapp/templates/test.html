@@ -1,0 +1,67 @@
+{% extends  'layout.html' %}
+
+{% block content %}
+<div class="content-section">
+    <form method="POST" action="/backtest/test">
+        {{ form.hidden_tag() }}
+        <fieldset class="from-group border-bottom mb-3">
+            <legend class="border-bottom mb-2">Make Back Test</legend>
+            <div class="from-group mb-2">
+                {{ form.name.label(class="form-control-label") }}
+                {% if form.name.errors %}
+                    {{ form.name(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.name.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.name(class="form-control") }}
+                {% endif %}
+            </div>
+            <div class="from-group mb-2">
+                {{ form.start.label(class="form-control-label") }}
+                {% if form.start.errors %}
+                    {{ form.start(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.start.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.start(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="from-group mb-3">
+                {{ form.end.label(class="form-control-label") }}
+                {% if form.end.errors %}
+                    {{ form.end(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.end.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.end(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="from-group">
+                <table class="table table-striped table-bordered">
+                    {% for indicator in indicators%}
+                    {% if indicator.id != 1%}
+                    <tr>
+                        <td>{{indicator.name}}</td>
+                        <td>Use For Test  <input type="checkbox", name="fortest", value="{{indicator.id}}"></td>
+                        <td>Use Sell Indicator  <input type="checkbox", name="sellindicator", value="{{indicator.id}}"></td>
+                    </tr>
+                    {% endif%}
+                    {% endfor %}
+                </table>
+            </div>
+        </fieldset>
+        <div class="from-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

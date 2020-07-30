@@ -1,0 +1,37 @@
+{% extends  'layout.html' %}
+
+{% block content %}
+<div class="content-section">
+    <legend class="border-bottom mb-3">Indicator Variables</legend>
+    <fieldset class="from-group border-bottom mb-4">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>Indicator Name</th>
+                <th>Max Stocks</th>
+                <th>Max Days</th>
+                <th>Profit Target1</th>
+                <th>Profit Target2</th>
+                <th>Cut Loss</th>
+                <th>Minimun Volume</th>
+                <th>Trading Fee</th>
+                <th>Max Trading Fee</th>
+            </tr>
+            {% for variables in indicator_variables%}
+                {% if variables.indicator_id != 1%}
+                    <tr>
+                        <td><a href="{{ url_for('indicator.oneindicator', indicator_id=variables.indicator_id )}}">{{variables.indicator.name}}</a></td>
+                        <td>{{variables.maxstocks}}</td>
+                        <td>{{variables.maxdays}}</td>
+                        <td>{{variables.target1}}</td>
+                        <td>{{variables.target2}}</td>
+                        <td>{{variables.cutloss}}</td>
+                        <td>{{variables.minvolume}}</td>
+                        <td>{{variables.tradingfee}}</td>
+                        <td>{{variables.maxtradingfee}}</td>
+                    </tr>
+                {% endif%}
+            {% endfor %}
+        </table>
+    </fieldset>
+</div>
+{% endblock %}

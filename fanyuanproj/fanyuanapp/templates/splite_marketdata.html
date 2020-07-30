@@ -1,0 +1,24 @@
+{% extends  'layout.html' %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="from-group  border-bottom mb-4">
+                <legend class="border-bottom mb-4">Download Market Data</legend>
+                <div class="form-group">
+                    {{ form.inputfile.label() }}
+                    {{ form.inputfile(class="form-control-file") }}
+                    {% if form.inputfile.errors %}
+                        {% for error in form.inputfile.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="from-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

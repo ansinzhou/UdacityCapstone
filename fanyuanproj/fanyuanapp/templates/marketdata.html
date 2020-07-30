@@ -1,0 +1,31 @@
+{% extends  'layout.html' %}
+
+{% block content %}
+<div class="content-section">
+    <legend class="border-bottom mb-3">Market Data
+        <a class="btn btn-secondary btn-sm mt-1 mb-1 float-right" href="{{ url_for('database.marketdata_summery') }}">Back</a>
+    </legend>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Date</th>
+            <th>Symbol</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Close</th>
+            <th>Volumn</th>
+        </tr>
+        {% for row in marketdata %}
+            <tr>
+                <td>{{row.date}}</td>
+                <td>{{row.symbol}}</td>
+                <td>{{"%.2f" % row.openprice}}</td>
+                <td>{{"%.2f" % row.highprice}}</td>
+                <td>{{"%.2f" % row.lowprice}}</td>
+                <td>{{"%.2f" % row.closeprice}}</td>
+                <td>{{"%.2f" % row.volumn}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

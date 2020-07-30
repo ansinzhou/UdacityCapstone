@@ -1,0 +1,80 @@
+{% extends  'layout.html' %}
+
+{% block content %}
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="from-group mb-2">
+            <legend class="border-bottom mb-4">Global Variables</legend>
+            <div class="from-group mb-2">
+                {{ form.capital.label(class="form-control-label") }}
+                {% if form.capital.errors %}
+                    {{ form.capital(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.capital.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.capital(class="form-control") }}
+                {% endif %}
+            </div>
+            <div class="from-group  mb-2">
+                {{ form.leverage.label(class="form-control-label") }}
+                {% if form.leverage.errors %}
+                    {{ form.leverage(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.leverage.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.leverage(class="form-control") }}
+                {% endif %}
+            </div>
+            <div class="from-group  mb-2">
+                {{ form.long_leverage.label(class="form-control-label") }}
+                {% if form.leverage.errors %}
+                    {{ form.long_leverage(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.long_leverage.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.long_leverage(class="form-control") }}
+                {% endif %}
+            </div>
+            <div class="from-group  mb-2">
+                {{ form.short_leverage.label(class="form-control-label") }}
+                {% if form.leverage.errors %}
+                    {{ form.short_leverage(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.short_leverage.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.short_leverage(class="form-control") }}
+                {% endif %}
+            </div>
+            <div class="from-group mb-2">
+                {{ form.friction.label(class="form-control-label") }}
+                {% if form.friction.errors %}
+                    {{ form.friction(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.friction.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.friction(class="form-control") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="from-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

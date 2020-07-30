@@ -1,0 +1,24 @@
+pip install yfinance --upgrade --no-cache-dir
+pip install pandas_datareader --upgrade --no-cache-dir
+pip install flask
+pip install flask-wtf
+pip install flask-sqlalchemy
+pip install scipy
+pip install seaborn
+
+Buy indicator should be csv file with column names like
+Symbol,Date,Open,High,Low,Close,BuyPrice
+
+Sell indicator should be csv file with column names like
+Symbol,Date,SellPrice
+
+from command window
+go directory flaskproj
+
+should run only once to create database and global variable table
+python3 create_db.py
+
+python3 run.py
+
+from your browser
+http://localhost:5000

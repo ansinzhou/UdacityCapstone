@@ -1,0 +1,75 @@
+<header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <a class="navbar-brand" href="#"><img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/logo.png') }}">Pan-Orgins</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbaContent" aria-controls="navbaContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbaContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('main.home') }}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Indicator
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url_for('indicator.create_indicator') }}">Create Indicator</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ url_for('indicator.indicators') }}">Show Indicators</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Database
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url_for('database.marketdata_summery') }}">Market Data Summery</a>
+                        <!--<a class="dropdown-item" href="{{ url_for('database.fail_download_marketdata') }}">Missed Market Data</a>-->
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ url_for('database.update_marketdata_summery') }}">Update MarketData Summery</a>
+                        <!--<a class="dropdown-item" href="{{ url_for('database.redownload_marketdata') }}">Redownload Failed Tickers</a>-->
+                        <a class="dropdown-item" href="{{ url_for('database.splite_marketdata') }}">Splite Market Data</a>
+                        <a class="dropdown-item" href="{{ url_for('database.import_hk_marketdata') }}">Import HongKong Market Data</a>
+                        <!--<div class="dropdown-divider"></div>-->
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Trade Management
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Back Test
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url_for('backtest.test') }}">Make a Backtest</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ url_for('backtest.test_summery') }}">Test Summeries</a>
+                        <a class="dropdown-item" href="{{ url_for('backtest.global_variables') }}">Global Variables</a>
+                        <a class="dropdown-item" href="{{ url_for('backtest.delete') }}">Delete Test Summeries</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Optimization
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

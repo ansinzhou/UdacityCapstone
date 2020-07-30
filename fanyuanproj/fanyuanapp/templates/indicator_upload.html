@@ -1,0 +1,37 @@
+{% extends  'layout.html' %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="from-group">
+                <legend class="border-bottom mb-4">Upload Buy Or/And Sell Indicator </legend>
+                <div class="form-group">
+                    {{ form.buyinput.label() }}
+                    {{ form.buyinput(class="form-control-file") }}
+                    {% if form.buyinput.errors %}
+                        {% for error in form.buyinput.errors %}
+                        <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-check">
+                    {{ form.frombuyfolder(class="form-check-input") }}
+                    {{ form.frombuyfolder.label(class="form-check-label") }}
+                </div>
+                <div class="form-group">
+                    {{ form.sellinput.label() }}
+                    {{ form.sellinput(class="form-control-file") }}
+                    {% if form.sellinput.errors %}
+                        {% for error in form.sellinput.errors %}
+                        <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="from-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

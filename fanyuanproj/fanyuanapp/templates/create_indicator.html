@@ -1,0 +1,162 @@
+{% extends  'layout.html' %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="from-group border-bottom mb-2">
+                <legend class="border-bottom mb-3">Create Indicator</legend>
+                <div class="from-group mb-2">
+                    {{ form.name.label(class="form-control-label") }}
+                    {% if form.name.errors %}
+                        {{ form.name(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.name(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.buyinput.label() }}
+                    {{ form.buyinput(class="form-control-file") }}
+                    {% if form.buyinput.errors %}
+                        {% for error in form.buyinput.errors %}
+                        <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-check mb-2">
+                    {{ form.hongkongstocks(class="form-check-input") }}
+                    {{ form.hongkongstocks.label(class="form-check-label") }}
+                </div>
+                <!--<div class="form-check">-->
+                    <!--{{ form.frombuyfolder(class="form-check-input") }}-->
+                    <!--{{ form.frombuyfolder.label(class="form-check-label") }}-->
+                <!--</div>-->
+                <div class="from-group mb-2">
+                    {{ form.maxstocks.label(class="form-control-label") }}
+                    {% if form.maxstocks.errors %}
+                        {{ form.maxstocks(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.maxstocks.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.maxstocks(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class="from-group mb-2">
+                    {{ form.maxdays.label(class="form-control-label") }}
+                    {% if form.maxdays.errors %}
+                        {{ form.maxdays(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.maxdays.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.maxdays(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class="from-group mb-2">
+                    {{ form.target1.label(class="form-control-label") }}
+                    {% if form.target1.errors %}
+                        {{ form.target1(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.target1.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.target1(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class="from-group mb-2">
+                    {{ form.target2.label(class="form-control-label") }}
+                    {% if form.target2.errors %}
+                        {{ form.target2(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.target2.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.target2(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class="from-group mb-2">
+                    {{ form.cutloss.label(class="form-control-label") }}
+                    {% if form.cutloss.errors %}
+                        {{ form.cutloss(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.cutloss.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.cutloss(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class="from-group mb-2">
+                    {{ form.minvolume.label(class="form-control-label") }}
+                    {% if form.minvolume.errors %}
+                    {{ form.minvolume(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.minvolume.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.minvolume(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class="from-group mb-2">
+                    {{ form.minbuy.label(class="form-control-label") }}
+                    {% if form.minbuy.errors %}
+                    {{ form.minbuy(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.minbuy.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.minbuy(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class="from-group mb-2">
+                    {{ form.tradingfee.label(class="form-control-label") }}
+                    {% if form.tradingfee.errors %}
+                    {{ form.tradingfee(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.tradingfee.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.tradingfee(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class="from-group mb-2">
+                    {{ form.maxtradingfee.label(class="form-control-label") }}
+                    {% if form.maxtradingfee.errors %}
+                    {{ form.maxtradingfee(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.maxtradingfee.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.maxtradingfee(class="form-control") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="from-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

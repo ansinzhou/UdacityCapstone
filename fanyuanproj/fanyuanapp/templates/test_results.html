@@ -1,0 +1,200 @@
+{% extends  'layout.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="float-right">
+        <a class="btn btn-primary btn-sm mt-1 mb-1" href="{{ url_for('backtest.test') }}">New Test</a>
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('backtest.test_summery') }}">Summeries</a>
+        <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+    </div>
+    <ul class="nav nav-tabs md-tabs" id="myTabMD" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="stats-tab-md" data-toggle="tab" href="#stats-md" role="tab" aria-controls="stats-md"
+               aria-selected="true">Statistics</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="activity-tab-md" data-toggle="tab" href="#activity-md" role="tab" aria-controls="activity-md"
+               aria-selected="false">Activity</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="positions-tab-md" data-toggle="tab" href="#positions-md" role="tab" aria-controls="positions-md"
+               aria-selected="false">Daily Positions</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab-md" data-toggle="tab" href="#dailyres-md" role="tab" aria-controls="dailyres-md"
+               aria-selected="false">Daily Summeries</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab-md" data-toggle="tab" href="#failedtrades-md" role="tab" aria-controls="failedtrades-md"
+               aria-selected="false">Faided To Buy</a>
+        </li>
+    </ul>
+    <div class="tab-content card pt-2" id="myTabContentMD">
+        <div class="tab-pane fade show active" id="stats-md" role="tabpanel" aria-labelledby="stats-tab-md">
+            <div>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>RETURNS(%)</th>
+                        <th>BETA</th>
+                        <th>ALPHA</th>
+                        <th>SHARPE</th>
+                        <th>WINS(%)</th>
+                        <th>LOSS(%)</th>
+                        <th>COVERAGE(%)</th>
+                    </tr>
+                    <tr>
+                        <td>{{statistics.returns}}</td>
+                        <td>{{statistics.beta}}</td>
+                        <td>{{statistics.alpha}}</td>
+                        <td>{{statistics.sharpe}}</td>
+                        <td>{{statistics.wins}}</td>
+                        <td>{{statistics.loss}}</td>
+                        <td>{{statistics.coverage}}</td>
+                    </tr>
+                </table>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>TURNOVER</th>
+                        <th>CASH USED</th>
+                        <th>LEVERAGE</th>
+                        <th>HOLDINGS</th>
+                        <th>PERIODS</th>
+                        <th>DRAWDOWN(%)</th>
+                        <th>LOWEST(%)</th>
+                    </tr>
+                    <tr>
+                        <td>{{statistics.turnover}}</td>
+                        <td>{{statistics.cashused}}</td>
+                        <td>{{statistics.leverage}}</td>
+                        <td>{{statistics.holdings}}</td>
+                        <td>{{statistics.period}}</td>
+                        <td>{{statistics.drawdown}}</td>
+                        <td>{{statistics.lowestpoint}}</td>
+                    </tr>
+                </table>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>ACTUAL TRADES</th>
+                        <th>NO TRADES FOR VOLUME</th>
+                        <th>NO TRADES FOR CASH</th>
+                        <th>POTENTIAL TRADES</th>
+                    </tr>
+                    <tr>
+                        <td>{{statistics.trades}}</td>
+                        <td>{{statistics.notradesforvolume}}</td>
+                        <td>{{statistics.notradesforcash}}</td>
+                        <td>{{statistics.potentialtrades}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div><img src='{{graph}}'/></div>
+            <div><img src='{{bar}}'/></div>
+        </div>
+        <div class="tab-pane fade" id="activity-md" role="tabpanel" aria-labelledby="activity-tab-md">
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>POSITION</th>
+                    <th>SYMBOL</th>
+                    <th>TRANSACTION</th>
+                    <th>UNIT PRICE</th>
+                    <th>QUANTITY</th>
+                </tr>
+                {% for row in activities%}
+                    <tr>
+                        <td>{{row.position}}</td>
+                        <td>{{row.symbol}}</td>
+                        <td>{{row.tranaction}}</td>
+                        <td>{{"%.2f" % row.unitprice}}</td>
+                        <td>{{"%d" % row.quantity}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="tab-pane fade" id="positions-md" role="tabpanel" aria-labelledby="positions-tab-md">
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>DATE</th>
+                    <th>SYMBOL</th>
+                    <th>UNIT PRICE</th>
+                    <th>QUANTITY</th>
+                    <th>POSITION</th>
+                    <th>PERIOD</th>
+                    <th>GAIN OR LOSS</th>
+                </tr>
+                {% for row in positions%}
+                    <tr>
+                        <td>{{row.date}}</td>
+                        <td>{{row.symbol}}</td>
+                        <td>{{"%.2f" % row.unitprice}}</td>
+                        <td>{{"%d" % row.quantity}}</td>
+                        <td>{{"%.2f" % row.position}}</td>
+                        <td>{{"%d" % row.period}}</td>
+                        <td>{{"%.2f" % row.gainloss}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="tab-pane fade" id="dailyres-md" role="tabpanel" aria-labelledby="dailyres-tab-md">
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>Date</th>
+                    <th>RETURNS(%)</th>
+                    <th>CASH</th>
+                    <th>HOLDING</th>
+                    <th>ACTUAL PORTFOLIO</th>
+                    <th>PORTFOLIO</th>
+                    <th>LEVERAGE</th>
+                    <th>DRAWDOWN(%)</th>
+                </tr>
+                {% for row in dailyresults%}
+                    <tr>
+                        <td>{{row.date}}</td>
+                        <td>{{"%.3f" % (row.returns*100)}}</td>
+                        <td>{{"%.2f" % row.cash}}</td>
+                        <td>{{"%.2f" % row.holding}}</td>
+                        <td>{{"%.2f" % row.actualportfolio}}</td>
+                        <td>{{"%.2f" % row.portfolio}}</td>
+                        <td>{{"%.2f" % row.leverage}}</td>
+                        <td>{{"%.3f" % (row.drawdown*100)}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="tab-pane fade" id="failedtrades-md" role="tabpanel" aria-labelledby="failedtrades-tab-md">
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>DATE</th>
+                    <th>SYMBOL</th>
+                    <th>REASON</th>
+                </tr>
+                {% for row in failedtrades%}
+                <tr>
+                    <td>{{row.date}}</td>
+                    <td>{{row.symbol}}</td>
+                    <td>{{row.reason}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete this Test Summery?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form action="{{ url_for('backtest.delete_test_summery', summery_id=statistics.summery_id )}}" method="POST">
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
