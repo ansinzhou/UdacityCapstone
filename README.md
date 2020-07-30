@@ -65,20 +65,21 @@ In the second part(ipyb file) project, it was requested to achieve the following
 A step by step user guideline, with test data ready for use to test the webapp:
 1. Under Indicator click create indicator.
 2. Input a name for indicator name (e.g testdata)
-3. Click choose file, under fayuanproj directory, to to user_inputs folder and select HKClose
+3. Click choose file, under fayuanproj directory, to to user_inputs folder and select testinput
 4. Click on checkmark for Hong Kong Stock, because the input csv file is hong kong stocks, otherwise if it's U.S traded stocks, checkmark would be left blank.
-5. In sequence, input these variable values starting from Max Stocks In Holding: 20 , 20, 6, 6, -8, 5, 500000, 0.0001, 0.0001.
+5. In sequence, input these variable values starting from Max Stocks In Holding: 20 , 20, 6, 6, -8, 1, 1000, 0.0001, 0.0001.
 6. Trading variables are needed to generate sell points, different variables can be inputed; for example, if the stock traded was shorted then the profit target and cut loss would be reversed(eg: -6,-6,8). For testing purposes, stick with the above given variable values. Can be experiemented with later.
 7. Click create at the bottom
 8. Once indicator is created, click on the created indicator name. Click on Buy Info to double check buy points are uploaded correctly. Upload of custom sell points is availble through clicking the top right upload button. However, for testing purposes, we'll stick with the inputed variables generated sell points.
 9. Next, under backtest click Make a backtest.
 10. Input any test name (eg. Test123)
-11. The current data and test data supports backtesting between 2008-01-01 to 2019-12-31. Select testing range(eg. Start Date 2018-01-12 , End Date 1029-12-15)
-12. Check the Use For Test box for the indicator previously created(testdata). Leave Use Sell Indicator box blank, since we're not using custom uploaded sell data.
-13. Click Run & Save
-14. After a few moments, a result report is generated. Different metrics are calculated and can be seen under different tabs, such as return against benchmark graph and more. Ohter tabs such as Daiy Summeries shows a EOD PL extra.
-15. Under Backtest, on the top navigation bar, click test summaries to see all past backtest reports.
-16. Under backtest of navigation bar, click global variables to change inputs such as leverage and starting cash etc.
+11. Select test date range: Start date 2016-01-01  End date 2016-02-01.
+12. In normal circumstances all market data would be availble for all U.S and HongKong stocks, however this test version only has marketdata for the testinput stocks.
+13. Check the Use For Test box for the indicator previously created(testdata). Leave Use Sell Indicator box blank, since we're not using custom uploaded sell data.
+14. Click Run & Save
+15. After a few moments, a result report is generated. Different metrics are calculated and can be seen under different tabs, such as return against benchmark graph and more. Ohter tabs such as Daiy Summeries shows a EOD PL extra.
+16. Under Backtest, on the top navigation bar, click test summaries to see all past backtest reports.
+17. Under backtest of navigation bar, click global variables to change inputs such as leverage and starting cash etc.
 
 
 
