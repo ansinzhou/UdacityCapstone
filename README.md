@@ -8,6 +8,9 @@ Udacity Data Scientist program capstone project
 3. [Motivation](#Motivation)
 4. [Repository Structure](#Structure)
 5. [WebApp User Guide](#Webapp)
+6. [Metrics](#Metrics)
+7. [Analysis](#Analysis)
+5. [WebApp User Guide](#Webapp)
 6. [Results](#Results)
 7. [Licensing, Authors, Acknowledgements](#Licensing)
 
@@ -82,6 +85,36 @@ A step by step user guideline, with test data ready for use to test the webapp:
 17. Under backtest of navigation bar, click global variables to change inputs such as leverage and starting cash etc.
 
 
+
+## Metrics <a name="Metrics"></a>
+
+- Metrics for the WebApp are the generated return , and daily P/L in the results page. It evaluates a strategies peformance and indicates whether a strategy is usable in real world scenarios. 
+
+- Metrics used for  the screener are accruacy, confusion matrix, and standard deviation. Metrics are chosen because the main intrest is the prediction accuracy of the model, hence gaging if it would translate into the real world.
+
+
+## Analysis <a name="Analysis"></a>
+
+1. In the WebApp generated report under statistics tab, calculated reatures and statistics are the following:
+    - Beta
+    - Alpha
+    - Sharpe
+    - Win(%)
+    - Loss(%)
+    - Coverage(%)
+    - Turnover
+    - Cash used
+    - Leverage
+    - Average stock in holding
+    - Average holding period per stock
+    - Max drawdown(%)
+    - Lowest return(%)
+    - Actual number of trades
+    - No trades due to volume restriction
+    - No trades to to shortage of cash
+    - Number of potential trades
+ 
+2. 
 
 
 ## Results <a name="Results"></a>
