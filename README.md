@@ -10,7 +10,7 @@ Udacity Data Scientist program capstone project
 5. [WebApp User Guide](#Webapp)
 6. [Metrics](#Metrics)
 7. [Analysis](#Analysis)
-5. [WebApp User Guide](#Webapp)
+5. [Methodology](#Methodology)
 6. [Results](#Results)
 7. [Licensing, Authors, Acknowledgements](#Licensing)
 
@@ -95,6 +95,8 @@ A step by step user guideline, with test data ready for use to test the webapp:
 
 ## Analysis <a name="Analysis"></a>
 
+The features and calculated statistics relevant to the datset are calculated and reported through the WebApp, the webapp will return different numbers depending on the uploaded and tested dataset.
+
 1. In the WebApp generated report under statistics tab, calculated reatures and statistics are the following:
     - Beta
     - Alpha
@@ -114,9 +116,52 @@ A step by step user guideline, with test data ready for use to test the webapp:
     - No trades to to shortage of cash
     - Number of potential trades
  
-2. 
+2. In the WebApp generated report under statistics tab, derived features from original dataset are the following:
+    - Transaction type
+    - Unit price
+    - Unit quantity
+ 
+3.  In the WebApp generated report under daily positions tab, derived features from the original dataset are the following:
+    - Current unit price
+    - Unit quantity
+    - Position
+    - Holding period
+    - Gain/Loss
+
+4.  In the WebApp generated report under daily summeries tab, derived features from the original dataset are the following:
+    - Daily returns
+    - Daily cash
+    - Daily stock holding value
+    - Daily actual portfolio value
+    - Daily leveraged portfolio value
+    - Daily leverage
+    - Daily drawdown
+    
+5.  In the WebApp generated report under Statistics tab, the following visualizations are generated to help users better understand their trading strategy: 
+    - Plotted return line against benchmark.
+    - Bar graph of number of daily bought stocks.
 
 
+
+## Methodology <a name="Methodology"></a>
+   
+   - Preprocessing the dataset given for building the model includes 9 steps:
+     1. Importing dataset
+     2. Dropping all unneeded columns: Dropping all the 'Label' columns because they only contain nan values and isn't useful.
+     3. Only interested in rows where Shortbuy happnened. Hence dropping all rows where shortbuy=0
+     4. Dropping rows where ShortBuy and BuyWINLOSS are nans, ShortBuy is the data interested in, BuyWINLOSS is the y dependent variable.
+     5. Shortbuy not needed for model training and calculations, after the first 4 steps, shorbuy becomes unuseful and dropped.
+     6. Filling the rest of the missing values with mean
+     7. Splitting dataset into independent variables(X) and the dependent variable(y)
+     8. Performing features scaling on X
+     9. Splitting the dataset into the training set and test set
+    
+   
+   - One supervised model was chosen for the dataset and one unsupervised model was chosen, to compare accuracies of the two different type of models; in superviesd models it was previously found that in this situations, random forest classifier generates the highest accuracy. The article to previous findings can be found here: https://medium.com/@ansin0517/quantitative-hedgefunds-what-happens-when-your-5-day-moving-average-crosses-above-the-c357bd8e16b7
+
+   - The unsupervised model was chosen to see if machine generated logic and weights would provide better results as model accuracy. Because generally, all stockmarket related trade data is easily collected or purchased, there is abundent data available, and unsupervised model tends to work better and improve with bigger data.
+   
+  
 ## Results <a name="Results"></a>
 
 1. WebApp
